@@ -1,0 +1,29 @@
+<div class="form-group">
+    <label for="field1-od" class="required">Name #1</label>
+    <input
+  #inputElement
+  [value]="customForm.value"
+  [type]="type"
+  [id]="id"
+  [placeholder]="placeholder"
+  (change)="onChange($event)"
+  (keyup)="onKeyup($event)"
+  (blur)="onBlur($event)">
+  
+  <form [formGroup]="customForm" >
+  <select #selectInput (change)="onChange($event)"
+  (keyup)="onKeyup($event)"
+  (blur)="onBlur($event)" formControlName='field1'>
+    <option value="1">one</option>
+    <option value="2">two</option>
+    <option value="3">three</option>
+    <option value="4">four</option>
+    <option value="5">five</option>
+  </select>
+  <input type="number" 
+  (change)="onChange($event)"
+  (keyup)="onKeyup($event)"
+  (blur)="onBlur($event)" formControlName='field2'>
+</form>
+  
+</div>

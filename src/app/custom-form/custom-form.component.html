@@ -1,0 +1,17 @@
+<p>
+  This is a Custom Form control
+</p>
+<div>
+  <div class="form-group">
+    <label for="field1-od" class="required">Name #1</label>
+    <input
+  #inputElement
+  [value]="value"
+  [type]="type"
+  [id]="id"
+  [placeholder]="placeholder"
+  (change)="onChange($event)"
+  (keyup)="onKeyup($event)"
+  (blur)="onBlur($event)">
+  </div>
+</div>
