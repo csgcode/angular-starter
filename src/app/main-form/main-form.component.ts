@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormGroup,FormControl, Validators,AbstractControl, ValidationErrors, } from '@angular/forms'
+import {FormGroup,FormControl,FormBuilder, Validators,AbstractControl, ValidationErrors, } from '@angular/forms'
 
 @Component({
   selector: 'app-main-form',
@@ -9,14 +9,18 @@ import {FormGroup,FormControl, Validators,AbstractControl, ValidationErrors, } f
 export class MainFormComponent implements OnInit {
   formValues;
 
-  constructor() { }
+  constructor(private fb: FormBuilder) { }
 
   // Code
   public nestedForm: FormGroup = new FormGroup({
       fname: new FormControl("", [Validators.required]),
       email: new FormControl("", ),
       addressLine: new FormControl("", ),
-      areacode: new FormControl("",)
+      areacode: new FormControl("",),
+      address: this.fb.control({
+        city: '',
+        town: '',
+      })
   })
 
   onSubmit() {
@@ -26,6 +30,8 @@ export class MainFormComponent implements OnInit {
   testPatch() {
     this.nestedForm.get('email').patchValue('imgokulcs@gmail.com');
     this.nestedForm.get('areacode').patchValue('5');
+    this.nestedForm.get('address').patchValue({city: 'kochi', town  : 'west-kochi da'});
+
 
     this.formValues = this.nestedForm.value;
     console.log('patched values', this.nestedForm.value);

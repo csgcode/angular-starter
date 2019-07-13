@@ -35,16 +35,19 @@ export class ExampleTwoComponent implements ControlValueAccessor {
   private _onTouched = () => {};
 
   writeValue(obj: any): void {
-    console.log('writevalue', obj);
-    this.value = this.customForm.value;
+    // this.value = this.customForm.value;
+    if (obj) {
     this.customForm.patchValue({
       field1: obj,
       field2: obj,
     });
   }
+  }
   registerOnChange(fn: any): void {
     console.log('registerOnChange', fn);
     this._onChange = fn;
+    this.customForm.valueChanges.subscribe(fn);
+
   }
   registerOnTouched(fn: any): void {
     console.log('registerOnTouched', fn);
